@@ -56,6 +56,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///C:/Flutter/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/Flutter/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -63,7 +69,7 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/yelam/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "rootUri": "file:///C:/Users/yelam/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -158,7 +164,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-07-05T07:49:41.688637Z",
+  "generated": "2023-07-05T18:51:23.246298Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

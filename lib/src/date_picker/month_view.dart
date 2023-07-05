@@ -2443,11 +2443,11 @@ abstract class _IMonthView extends RenderBox with ContainerRenderObjectMixin<Ren
   ///  Returns the accessibility text for the month cell.
   String _getSemanticMonthLabel(dynamic date) {
     if (_isHijri) {
-      return '${DateFormat('EEE').format(date.toDateTime())},${date.day}'
-          // ignore: lines_longer_than_80_chars
-          ' ${DateRangePickerHelper.getHijriMonthText(date, localizations, 'MMMM')} ${date.year}';
+      return '${DateFormat('EEE').format(date.toDateTime()).capitalize()},${date.day}'
+              ' ${DateRangePickerHelper.getHijriMonthText(date, localizations, 'MMMM')} ${date.year}'
+          .capitalize();
     } else {
-      return DateFormat('EEE, dd MMMM yyyy').format(date);
+      return DateFormat('EEE, dd MMMM yyyy').format(date).capitalize();
     }
   }
 }

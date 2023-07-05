@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:flutter_datepicker/datepicker.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   return runApp(MyApp());
@@ -53,6 +54,13 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [Locale('ru')],
+      locale: Locale('ru'),
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: Scaffold(
         appBar: AppBar(
@@ -83,6 +91,13 @@ class MyAppState extends State<MyApp> {
               right: 0,
               bottom: 0,
               child: SfDateRangePicker(
+                view: DateRangePickerView.month,
+                headerStyle: DateRangePickerHeaderStyle(
+                  textAlign: TextAlign.center,
+                ),
+                monthViewSettings: DateRangePickerMonthViewSettings(
+                  viewHeaderHeight: 50,
+                ),
                 onSelectionChanged: _onSelectionChanged,
                 selectionMode: DateRangePickerSelectionMode.range,
                 initialSelectedRange: PickerDateRange(

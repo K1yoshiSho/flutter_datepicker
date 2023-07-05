@@ -1,6 +1,6 @@
 name: flutter_datepicker
 description: The Flutter Date Range Picker widget allows users to easily select dates or a range of dates. It has four built-in views that allow quick navigation to the desired date.
-version: 22.1.37
+version: 22.1.38
 homepage: https://github.com/syncfusion/flutter-examples
 
 screenshots:

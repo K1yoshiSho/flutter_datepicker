@@ -6810,7 +6810,7 @@ class _SfDateRangePickerState extends State<_SfDateRangePicker> with SingleTicke
               children: <Widget>[
                 TextButton(
                   child: Text(
-                    _localizations.todayLabel.toUpperCase(),
+                    _localizations.todayLabel.capitalize(),
                     style: TextStyle(color: textColor),
                   ),
                   onPressed: () {
@@ -7246,7 +7246,7 @@ class _SfDateRangePickerState extends State<_SfDateRangePicker> with SingleTicke
     if (_view == DateRangePickerView.century || !widget.allowViewNavigation) {
       return;
     }
-
+    print("_controller.view: ${_controller.view}");
     if (_view == DateRangePickerView.month) {
       _controller.view = widget.isHijri
           ? DateRangePickerHelper.getHijriPickerView(DateRangePickerView.year)
@@ -8124,7 +8124,7 @@ class _PickerViewHeaderPainter extends CustomPainter {
         currentDate = visibleDates[index];
         String dayText = DateFormat(monthViewSettings.dayFormat, locale.toString())
             .format(isHijri ? currentDate.toDateTime() : currentDate)
-            .toUpperCase();
+            .capitalize();
         dayText = _updateViewHeaderFormat(dayText);
 
         if (hasToday && currentDate.weekday == today.weekday && (isTodayMonth || isVerticalScroll)) {
@@ -8137,7 +8137,7 @@ class _PickerViewHeaderPainter extends CustomPainter {
         }
 
         final TextSpan dayTextSpan = TextSpan(
-          text: dayText,
+          text: dayText.capitalize(),
           style: dayTextStyle,
         );
 
@@ -8162,7 +8162,7 @@ class _PickerViewHeaderPainter extends CustomPainter {
     /// Eg: In chinese the first letter or `Sunday` represents `Weekday`, hence
     /// to avoid this added this condition based on locale.
     if (monthViewSettings.dayFormat == 'EE' && locale.languageCode == 'en') {
-      dayText = dayText[0];
+      dayText = dayText[0].capitalize();
     }
 
     return dayText;
@@ -8204,7 +8204,7 @@ class _PickerViewHeaderPainter extends CustomPainter {
           properties: SemanticsProperties(
             label: DateFormat('EEEEE')
                 .format(isHijri ? visibleDates[(j * datesCount) + i].toDateTime() : visibleDates[(j * datesCount) + i])
-                .toUpperCase(),
+                .capitalize(),
             textDirection: TextDirection.ltr,
           ),
         ));
@@ -12146,10 +12146,12 @@ String _getMonthHeaderText(
     if (isHijri) {
       text =
           // ignore: lines_longer_than_80_chars
-          '${DateRangePickerHelper.getHijriMonthText(middleDate, localizations, monthTextFormat)} ${middleDate.year}';
+          '${DateRangePickerHelper.getHijriMonthText(middleDate, localizations, monthTextFormat)} ${middleDate.year}'
+              .capitalize();
     } else {
       text = '${DateFormat(monthTextFormat, locale.toString()).format(middleDate)}'
-          ' ${middleDate.year}';
+              ' ${middleDate.year}'
+          .capitalize();
     }
 
     /// To restrict the double header when the number of weeks in view given
@@ -12279,4 +12281,13 @@ bool _isSwipeInteractionEnabled(bool enableSwipeSelection, DateRangePickerNaviga
 
 bool _isMultiViewEnabled(_SfDateRangePicker picker) {
   return picker.enableMultiView && picker.navigationMode != DateRangePickerNavigationMode.scroll;
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    if (isEmpty) {
+      return this;
+    }
+    return '${this[0].toUpperCase()}${substring(1)}';
+  }
 }
