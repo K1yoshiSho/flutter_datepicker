@@ -16,11 +16,9 @@ export 'src/date_picker/date_picker.dart';
 export 'src/date_picker/date_picker_manager.dart';
 export 'src/date_picker/hijri_date_picker_manager.dart';
 
-extension PickerStringExtension on String {
-  String capitalize() {
-    if (isEmpty) {
-      return this;
-    }
-    return '${this[0].toUpperCase()}${substring(1)}';
+String capitalize(String text) {
+  if (text.isEmpty) {
+    return text;
   }
+  return '${text[0].toUpperCase()}${text.substring(1)}';
 }

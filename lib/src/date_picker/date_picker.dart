@@ -6810,7 +6810,7 @@ class _SfDateRangePickerState extends State<_SfDateRangePicker> with SingleTicke
               children: <Widget>[
                 TextButton(
                   child: Text(
-                    _localizations.todayLabel.capitalize(),
+                    capitalize(_localizations.todayLabel),
                     style: TextStyle(color: textColor),
                   ),
                   onPressed: () {
@@ -8122,9 +8122,8 @@ class _PickerViewHeaderPainter extends CustomPainter {
         int index = isRtl ? DateRangePickerHelper.getRtlIndex(DateTime.daysPerWeek, i) : i;
         index = index + (currentViewIndex * datesCount);
         currentDate = visibleDates[index];
-        String dayText = DateFormat(monthViewSettings.dayFormat, locale.toString())
-            .format(isHijri ? currentDate.toDateTime() : currentDate)
-            .capitalize();
+        String dayText = capitalize(DateFormat(monthViewSettings.dayFormat, locale.toString())
+            .format(isHijri ? currentDate.toDateTime() : currentDate));
         dayText = _updateViewHeaderFormat(dayText);
 
         if (hasToday && currentDate.weekday == today.weekday && (isTodayMonth || isVerticalScroll)) {
@@ -8137,7 +8136,7 @@ class _PickerViewHeaderPainter extends CustomPainter {
         }
 
         final TextSpan dayTextSpan = TextSpan(
-          text: dayText.capitalize(),
+          text: capitalize(dayText),
           style: dayTextStyle,
         );
 
@@ -8162,7 +8161,7 @@ class _PickerViewHeaderPainter extends CustomPainter {
     /// Eg: In chinese the first letter or `Sunday` represents `Weekday`, hence
     /// to avoid this added this condition based on locale.
     if (monthViewSettings.dayFormat == 'EE' && locale.languageCode == 'en') {
-      dayText = dayText[0].capitalize();
+      dayText = capitalize(dayText[0]);
     }
 
     return dayText;
@@ -8202,9 +8201,8 @@ class _PickerViewHeaderPainter extends CustomPainter {
         semanticsBuilder.add(CustomPainterSemantics(
           rect: Rect.fromLTWH(left, top, cellWidth, size.height),
           properties: SemanticsProperties(
-            label: DateFormat('EEEEE')
-                .format(isHijri ? visibleDates[(j * datesCount) + i].toDateTime() : visibleDates[(j * datesCount) + i])
-                .capitalize(),
+            label: capitalize(DateFormat('EEEEE').format(
+                isHijri ? visibleDates[(j * datesCount) + i].toDateTime() : visibleDates[(j * datesCount) + i])),
             textDirection: TextDirection.ltr,
           ),
         ));
@@ -12146,12 +12144,11 @@ String _getMonthHeaderText(
     if (isHijri) {
       text =
           // ignore: lines_longer_than_80_chars
-          '${DateRangePickerHelper.getHijriMonthText(middleDate, localizations, monthTextFormat)} ${middleDate.year}'
-              .capitalize();
+          capitalize(
+              '${DateRangePickerHelper.getHijriMonthText(middleDate, localizations, monthTextFormat)} ${middleDate.year}');
     } else {
-      text = '${DateFormat(monthTextFormat, locale.toString()).format(middleDate)}'
-              ' ${middleDate.year}'
-          .capitalize();
+      text = capitalize('${DateFormat(monthTextFormat, locale.toString()).format(middleDate)}'
+              ' ${middleDate.year}');
     }
 
     /// To restrict the double header when the number of weeks in view given

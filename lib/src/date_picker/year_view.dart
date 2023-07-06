@@ -3767,7 +3767,7 @@ void _drawYearCells(PaintingContext context, Size size, _IYearViewRenderObject y
           yearView._updateCellDecoration(j, isCurrentDate, isEnableDate, isActiveDate, isDisabledDate);
 
       final TextSpan yearText = TextSpan(
-        text: yearView._getCellText(date).capitalize(), // LOG: Cell Text
+        text: capitalize(yearView._getCellText(date)), // LOG: Cell Text
         style: style,
       );
 
