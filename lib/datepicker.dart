@@ -16,7 +16,7 @@ export 'src/date_picker/date_picker.dart';
 export 'src/date_picker/date_picker_manager.dart';
 export 'src/date_picker/hijri_date_picker_manager.dart';
 
-String capitalize(String text) {
+String capitalizePicker(String text) {
   if (text.isEmpty) {
     return text;
   }
