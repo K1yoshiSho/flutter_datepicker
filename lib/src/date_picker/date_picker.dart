@@ -12282,12 +12282,3 @@ bool _isSwipeInteractionEnabled(bool enableSwipeSelection, DateRangePickerNaviga
 bool _isMultiViewEnabled(_SfDateRangePicker picker) {
   return picker.enableMultiView && picker.navigationMode != DateRangePickerNavigationMode.scroll;
 }
-
-extension StringExtension on String {
-  String capitalize() {
-    if (isEmpty) {
-      return this;
-    }
-    return '${this[0].toUpperCase()}${substring(1)}';
-  }
-}
